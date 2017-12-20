@@ -1,4 +1,4 @@
-Touch for Points
+# Touch for Points
 
 It is a very simple, two player action game which requires some fast reflexes. Random circles will appear on the screen in different colors.
 Those will be:
