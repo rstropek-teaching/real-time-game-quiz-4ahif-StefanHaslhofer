@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>TapforPoints</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="bootstrap.css">
+</head>
+
+<script src="jquery.min.js"></script>
+<script src="bootstrap.min.js"></script>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="FileSaver.min.js"></script>
+<script src="index.js"></script>
+<script>
+  $(function () {
+    var socket = io();
+    socket.on('cells', function (cells) {
+      setCells(cells);
+    });
+    socket.on('connect', function () {
+      setSocket(socket);
+      socket.emit('returnCanvasSize', getCanvasSize());
+      var canvas = document.getElementById(canvasName);
+      canvas.addEventListener("click", printMousePos);
+    });
+    socket.on('setUser', function (user) { // TIP: you can avoid listening on `connect` and listen on events directly too!
+      setUser(user);
+    });
+    socket.on('startDrawing', function (cells) {
+      drawCircles();
+    });
+    socket.on('changeColor', function (currentColor) {
+      setCurrentColor(currentColor);
+    });
+    socket.on('changeScore', function (points,userNum){
+      if(user._userNum===userNum){
+        $("#score").text("Score: "+points);
+      }
+    });  
+    socket.on('checkScore', function (bestPlayer) {
+      if(getUser()._userNum===bestPlayer._userNum){
+        var blob = new Blob([bestPlayer._score], { type: "text/plain;charset=utf-8" });
+        saveAs(blob, "highscore.txt");
+      }
+    });  
+  });
+
+</script>
+
+<body>
+  <canvas id="game">
+  </canvas>
+  <div class="container" id="modalContainer">
+    <!-- Modal windows-->
+    <div class="modal fade" id="modalWindow" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-12">
+                <button class="button" onclick="playerReady()">Start</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <canvas id="color">
+    </canvas>
+    <p id="score"></p>
+  </div>
+  
+  
+</body>
+
+</html>

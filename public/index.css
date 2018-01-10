@@ -1,0 +1,61 @@
+html,body{
+    background: linear-gradient(#757e8e, #9b9e78);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
+.button {
+    background-color: white;
+    color: #555555;
+    border: 5px solid #555555;
+    outline:none;
+    background-color: Transparent;
+    border-radius: 15px;
+    font-size: 50px;
+    padding: 0px 40px;
+}
+
+#modalContainer {
+    text-align:center;    
+}
+
+#game{
+    margin: 5px;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.modal-dialog{
+    padding-top:50%;
+}
+
+/* design of rectangle which shows the current color */
+#color {
+    position: fixed;
+    bottom: 1.5%;
+    left: 1.5%;
+    width:6vw;
+    height:3.5vw;
+    
+    box-shadow: 5px 5px 3px #555555;
+
+
+    border: 0px solid #555555;
+    -webkit-transition: background 0.5s linear;
+}
+
+#score {
+    position: fixed;
+    bottom: 0.01%;
+    left: 8%;
+    font-size: 300%;
+    color:#555555;
+    border: 4px solid #555555;
+    border-radius: 15px;
+}

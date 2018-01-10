@@ -1,0 +1,25 @@
+{
+  "name": "tap_for_points",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc --watch server.ts public/index.ts"
+  },
+  "author": "Stefan Haslhofer",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "express": "^4.16.2",
+    "file-saver": "^1.3.3",
+    "jquery": "^3.2.1",
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.11.0",
+    "@types/file-saver": "^1.3.0",
+    "@types/jquery": "^3.2.17",
+    "@types/socket.io": "^1.4.31"
+  }
+}
